@@ -1,0 +1,27 @@
+﻿@{
+    WebSecurity.InitializeDatabaseConnection("Shaffans",
+        "UserProfile", "UserId", "Email", true);
+
+    WebMail.SmtpServer = "smtp.gmail.com";
+    WebMail.SmtpPort = 587;
+    WebMail.EnableSsl = true;
+    WebMail.UserName = "formanite.2000@gmail.com";
+    WebMail.From = "formanite.2000@gmail.com";
+    WebMail.Password = "counterstrike1.66";
+    
+
+
+    PayPal.Profile.Initialize(
+            "{forman_1347918078_biz_api1.hotmail.com}",
+            "{1347918112}",
+            "{A-0k21zKFDbJhOjy7dqZvALUWfmPAHMjbDk2JlSdszsGxUH1X-avaGlU }",
+            "sandbox");
+
+    // General Adaptive Payments’ properties
+    PayPal.Profile.Language = "en_US";
+    PayPal.Profile.CancelUrl = "";
+    PayPal.Profile.ReturnUrl = "";
+    PayPal.Profile.IpnUrl = "";
+    PayPal.Profile.CurrencyCode = "USD";
+}
+
