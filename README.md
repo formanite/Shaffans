@@ -1,4 +1,0 @@
-Shaffans
-========
-
-Cricket Shopping Centre
