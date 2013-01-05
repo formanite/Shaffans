@@ -2738,18 +2738,6 @@
             The discovery services to use for identifiers.
             </summary>
         </member>
-        <member name="F:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.dummyIdentifierToInvokeStaticCtor">
-            <summary>
-            A type initializer that ensures that another type initializer runs in order to guarantee that
-            types are serializable.
-            </summary>
-        </member>
-        <member name="F:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.dummyRealmToInvokeStaticCtor">
-            <summary>
-            A type initializer that ensures that another type initializer runs in order to guarantee that
-            types are serializable.
-            </summary>
-        </member>
         <member name="F:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.nonVerifyingRelyingParty">
             <summary>
             Backing field for the <see cref="P:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.NonVerifyingRelyingParty"/> property.
@@ -2790,14 +2778,14 @@
             <summary>
             Initializes a new instance of the <see cref="T:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty"/> class.
             </summary>
-            <param name="applicationStore">The application store.  If <c>null</c>, the relying party will always operate in "dumb mode".</param>
+            <param name="applicationStore">The application store.  If <c>null</c>, the relying party will always operate in "stateless/dumb mode".</param>
         </member>
         <member name="M:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.#ctor(DotNetOpenAuth.Messaging.Bindings.ICryptoKeyStore,DotNetOpenAuth.Messaging.Bindings.INonceStore)">
             <summary>
             Initializes a new instance of the <see cref="T:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty"/> class.
             </summary>
-            <param name="cryptoKeyStore">The association store.  If null, the relying party will always operate in "dumb mode".</param>
-            <param name="nonceStore">The nonce store to use.  If null, the relying party will always operate in "dumb mode".</param>
+            <param name="cryptoKeyStore">The association store.  If <c>null</c>, the relying party will always operate in "stateless/dumb mode".</param>
+            <param name="nonceStore">The nonce store to use.  If <c>null</c>, the relying party will always operate in "stateless/dumb mode".</param>
         </member>
         <member name="M:DotNetOpenAuth.OpenId.RelyingParty.OpenIdRelyingParty.CreateRequest(DotNetOpenAuth.OpenId.Identifier,DotNetOpenAuth.OpenId.Realm,System.Uri)">
             <summary>

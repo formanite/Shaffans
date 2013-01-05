@@ -271,20 +271,6 @@
             <param name="context">The System.Runtime.Serialization.StreamingContext 
             that contains contextual information about the source or destination.</param>
         </member>
-        <member name="M:DotNetOpenAuth.Messaging.Bindings.CryptoKeyCollisionException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is a null reference (Nothing in Visual Basic).
-            </exception>
-            <PermissionSet>
-            	<IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*"/>
-            	<IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter"/>
-            </PermissionSet>
-        </member>
         <member name="T:DotNetOpenAuth.Messaging.Bindings.ICryptoKeyStoreContract">
             <summary>
             Code contract for the <see cref="T:DotNetOpenAuth.Messaging.Bindings.ICryptoKeyStore"/> interface.
@@ -3121,6 +3107,22 @@
             Gets the message version.
             </summary>
         </member>
+        <member name="T:DotNetOpenAuth.Messaging.Reflection.DefaultEncoderAttribute">
+            <summary>
+            Allows a custom class or struct to be serializable between itself and a string representation.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.Messaging.Reflection.DefaultEncoderAttribute.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DotNetOpenAuth.Messaging.Reflection.DefaultEncoderAttribute"/> class.
+            </summary>
+            <param name="converterType">The <see cref="T:DotNetOpenAuth.Messaging.Reflection.IMessagePartEncoder"/> implementing type to use for serializing this type.</param>
+        </member>
+        <member name="P:DotNetOpenAuth.Messaging.Reflection.DefaultEncoderAttribute.Encoder">
+            <summary>
+            Gets the default encoder to use for the declaring class.
+            </summary>
+        </member>
         <member name="T:DotNetOpenAuth.Messaging.StandardMessageFactory">
             <summary>
             A message factory that automatically selects the message type based on the incoming data.
@@ -4319,20 +4321,6 @@
             that holds the serialized object data about the exception being thrown.</param>
             <param name="context">The System.Runtime.Serialization.StreamingContext 
             that contains contextual information about the source or destination.</param>
-        </member>
-        <member name="M:DotNetOpenAuth.Messaging.ProtocolException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
-            <summary>
-            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the exception.
-            </summary>
-            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
-            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
-            <exception cref="T:System.ArgumentNullException">
-            The <paramref name="info"/> parameter is a null reference (Nothing in Visual Basic).
-            </exception>
-            <PermissionSet>
-            	<IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*"/>
-            	<IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter"/>
-            </PermissionSet>
         </member>
         <member name="P:DotNetOpenAuth.Messaging.ProtocolException.FaultedMessage">
             <summary>
@@ -6356,15 +6344,6 @@
             serialization requirements of the message part.
             </param>
         </member>
-        <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.Map``1(System.Func{``0,System.String},System.Func{``0,System.String},System.Func{System.String,``0})">
-            <summary>
-            Adds a pair of type conversion functions to the static conversion map.
-            </summary>
-            <typeparam name="T">The custom type to convert to and from strings.</typeparam>
-            <param name="toString">The function to convert the custom type to a string.</param>
-            <param name="toOriginalString">The mapping function that converts some custom value to its original (non-normalized) string.  May be null if the same as the <paramref name="toString"/> function.</param>
-            <param name="toValue">The function to convert a string to the custom type.</param>
-        </member>
         <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.SetValue(DotNetOpenAuth.Messaging.IMessage,System.String)">
             <summary>
             Sets the member of a given message to some given value.
@@ -6396,6 +6375,30 @@
             </summary>
             <param name="message">The message instance to check the value on.</param>
             <returns>True if the value is not the CLR default value.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.Map``1(System.Func{``0,System.String},System.Func{``0,System.String},System.Func{System.String,``0})">
+            <summary>
+            Adds a pair of type conversion functions to the static conversion map.
+            </summary>
+            <typeparam name="T">The custom type to convert to and from strings.</typeparam>
+            <param name="toString">The function to convert the custom type to a string.</param>
+            <param name="toOriginalString">The mapping function that converts some custom value to its original (non-normalized) string.  May be null if the same as the <paramref name="toString"/> function.</param>
+            <param name="toValue">The function to convert a string to the custom type.</param>
+        </member>
+        <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.CreateFallbackMapping(System.Type)">
+            <summary>
+            Creates a <see cref="T:DotNetOpenAuth.Messaging.Reflection.ValueMapping"/> that resorts to <see cref="M:System.Object.ToString"/> and 
+            <see cref="M:System.Convert.ChangeType(System.Object,System.Type,System.IFormatProvider)"/> for the conversion.
+            </summary>
+            <param name="type">The type to create the mapping for.</param>
+            <returns>The value mapping.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.GetDefaultEncoder(System.Type)">
+            <summary>
+            Creates the default encoder for a given type.
+            </summary>
+            <param name="type">The type to create a <see cref="T:DotNetOpenAuth.Messaging.Reflection.ValueMapping"/> for.</param>
+            <returns>A <see cref="T:DotNetOpenAuth.Messaging.Reflection.ValueMapping"/> struct.</returns>
         </member>
         <member name="M:DotNetOpenAuth.Messaging.Reflection.MessagePart.DeriveDefaultValue(System.Type)">
             <summary>

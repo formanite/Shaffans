@@ -4289,11 +4289,6 @@
             An Identifier is either a "http" or "https" URI, or an XRI.
             </summary>
         </member>
-        <member name="M:DotNetOpenAuth.OpenId.Identifier.#cctor">
-            <summary>
-            Initializes static members of the <see cref="T:DotNetOpenAuth.OpenId.Identifier"/> class.
-            </summary>
-        </member>
         <member name="M:DotNetOpenAuth.OpenId.Identifier.#ctor(System.String,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:DotNetOpenAuth.OpenId.Identifier"/> class.
@@ -4480,6 +4475,33 @@
             But if the Identifier is initialized locally, we can and should normalize it
             before serializing it.
             </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.OpenId.Identifier.IdentifierEncoder">
+            <summary>
+            Provides conversions to and from strings for messages that include members of this type.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Identifier.IdentifierEncoder.EncodeAsOriginalString(System.Object)">
+            <summary>
+            Encodes the specified value as the original value that was formerly decoded.
+            </summary>
+            <param name="value">The value.  Guaranteed to never be null.</param>
+            <returns>The <paramref name="value"/> in string form, ready for message transport.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Identifier.IdentifierEncoder.Encode(System.Object)">
+            <summary>
+            Encodes the specified value.
+            </summary>
+            <param name="value">The value.  Guaranteed to never be null.</param>
+            <returns>The <paramref name="value"/> in string form, ready for message transport.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Identifier.IdentifierEncoder.Decode(System.String)">
+            <summary>
+            Decodes the specified value.
+            </summary>
+            <param name="value">The string value carried by the transport.  Guaranteed to never be null, although it may be empty.</param>
+            <returns>The deserialized form of the given string.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string value given cannot be decoded into the required object type.</exception>
         </member>
         <member name="T:DotNetOpenAuth.OpenId.IdentifierContract">
             <summary>
@@ -8001,11 +8023,6 @@
             The Uri of the realm, with the wildcard (if any) removed.
             </summary>
         </member>
-        <member name="M:DotNetOpenAuth.OpenId.Realm.#cctor">
-            <summary>
-            Initializes static members of the <see cref="T:DotNetOpenAuth.OpenId.Realm"/> class.
-            </summary>
-        </member>
         <member name="M:DotNetOpenAuth.OpenId.Realm.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:DotNetOpenAuth.OpenId.Realm"/> class.
@@ -8205,6 +8222,33 @@
             but it can only work via heuristics. Negative responses from this method should be 
             treated as advisory, used only to alert the user to examine the trust root carefully.
             </remarks>
+        </member>
+        <member name="T:DotNetOpenAuth.OpenId.Realm.MessagePartRealmConverter">
+            <summary>
+            Provides conversions to and from strings for messages that include members of this type.
+            </summary>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Realm.MessagePartRealmConverter.Encode(System.Object)">
+            <summary>
+            Encodes the specified value.
+            </summary>
+            <param name="value">The value.  Guaranteed to never be null.</param>
+            <returns>The <paramref name="value"/> in string form, ready for message transport.</returns>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Realm.MessagePartRealmConverter.Decode(System.String)">
+            <summary>
+            Decodes the specified value.
+            </summary>
+            <param name="value">The string value carried by the transport.  Guaranteed to never be null, although it may be empty.</param>
+            <returns>The deserialized form of the given string.</returns>
+            <exception cref="T:System.FormatException">Thrown when the string value given cannot be decoded into the required object type.</exception>
+        </member>
+        <member name="M:DotNetOpenAuth.OpenId.Realm.MessagePartRealmConverter.EncodeAsOriginalString(System.Object)">
+            <summary>
+            Encodes the specified value as the original value that was formerly decoded.
+            </summary>
+            <param name="value">The value.  Guaranteed to never be null.</param>
+            <returns>The <paramref name="value"/> in string form, ready for message transport.</returns>
         </member>
         <member name="T:DotNetOpenAuth.OpenId.RelyingPartyEndpointDescription">
             <summary>
